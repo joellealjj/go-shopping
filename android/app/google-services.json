@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "360824367133",
+    "project_id": "go-shopping-952f1",
+    "storage_bucket": "go-shopping-952f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:360824367133:android:ea76f4f3be6714c3ccbef4",
+        "android_client_info": {
+          "package_name": "com.goshopping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "360824367133-ep5eq085gfs8miqcmgh8s42gp4rrpg5p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.goshopping",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "360824367133-biitu97lk6634cb3s96g4ae50ta9gp8a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCe-7T8m1S44Y7br0ZHz92xTfBA2dbLR4Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "360824367133-biitu97lk6634cb3s96g4ae50ta9gp8a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
