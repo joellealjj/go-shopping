@@ -10,19 +10,38 @@ export function FormBox() {
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState(0);
 
+  // gera o id automatico no firestore
   async function handleProductAdd() {
     firestore()
       .collection('products')
       .add({
         description,
         quantity,
-        done: false
+        done: false,
+        createdAt: firestore.FieldValue.serverTimestamp()
       })
       .then(() => {
         Alert.alert('Produto adicionado com sucesso!');
       })
       .catch((error) => console.error(error));
   };
+
+  // gera um id customizado
+  // 
+  // async function handleProductAdd() {
+  //   firestore()
+  //     .collection('products')
+  //     .doc('my-custom-id')
+  //     .set({
+  //       description,
+  //       quantity,
+  //       done: false
+  //     })
+  //     .then(() => {
+  //       Alert.alert('Produto adicionado com sucesso!');
+  //     })
+  //     .catch((error) => console.error(error));
+  // };
 
   return (
     <Container>
