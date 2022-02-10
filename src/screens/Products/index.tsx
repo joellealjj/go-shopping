@@ -6,6 +6,7 @@ import { Header } from '../../components/Header';
 import { Container } from './styles';
 
 export function Products() {
+  console.log('JOOOOOOEEEEEEELLLLLLLL')
   return (
     <Container>
       <Header title="Lista de compras" />
