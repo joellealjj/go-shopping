@@ -8,7 +8,41 @@ import { Product, ProductProps } from '../Product';
 export function ShoppingList() {
   const [products, setProducts] = useState<ProductProps[]>([]);
 
-  // lista todos os documentos
+  // lista todos os documentos e fica ouvindo realtime
+  useEffect(() => {
+    const subscribe = firestore()
+      .collection('products')
+      .onSnapshot(querySnapshot => {
+        const data = querySnapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            ...doc.data()
+          }
+        }) as ProductProps[];
+
+        setProducts(data);
+      });
+
+    // funcao de limpeza, pq onSnapshot fica ouvindo
+    return () => subscribe();
+  },[]);
+
+  /*
+  // lista documentos específicos pelo id
+  useEffect(() => {
+    firestore()
+      .collection('products')
+      .doc('id-do-documento')
+      .get()
+      .then(response => console.log({
+        id: response.id,
+        ...response.data()
+      }));
+  },[]);
+  */
+
+  /*
+  // lista todos os documentos, mas não realtime
   useEffect(() => {
     firestore()
       .collection('products')
@@ -25,18 +59,59 @@ export function ShoppingList() {
       })
       .catch(error => console.error(error));
   },[]);
+  */
 
-  // lista documentos específicos pelo id
-  // useEffect(() => {
-  //   firestore()
-  //     .collection('products')
-  //     .doc('id-do-documento')
-  //     .get()
-  //     .then(response => console.log({
-  //       id: response.id,
-  //       ...response.data()
-  //     }))
-  // },[]);
+  /*
+  // lista todos os documentos e fica ouvindo realtime
+  // adicionando filtro com WHERE
+  // adicionando limite com LIMIT
+  // adicionando ordem com ORDERBY
+  useEffect(() => {
+    const subscribe = firestore()
+      .collection('products')
+      .orderBy('description', 'asc')
+      .limit(2)
+      .where('quantity', '>=', 3)
+      .onSnapshot(querySnapshot => {
+        const data = querySnapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            ...doc.data()
+          }
+        }) as ProductProps[];
+
+        setProducts(data);
+      });
+
+    // funcao de limpeza, pq onSnapshot fica ouvindo
+    return () => subscribe();
+  },[]);
+  */
+
+  /*
+  // filtro baseado em intervalo, precisa do orderby
+  // startAt ou startAfter e endAt ou endBefore
+  useEffect(() => {
+    const subscribe = firestore()
+      .collection('products')
+      .orderBy('quantity')
+      .startAfter(3)
+      .endAt(8)
+      .onSnapshot(querySnapshot => {
+        const data = querySnapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            ...doc.data()
+          }
+        }) as ProductProps[];
+
+        setProducts(data);
+      });
+
+    // funcao de limpeza, pq onSnapshot fica ouvindo
+    return () => subscribe();
+  },[]);
+  */
 
   return (
     <FlatList
