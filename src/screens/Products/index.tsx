@@ -9,7 +9,7 @@ export function Products() {
   console.log('JOOOOOOEEEEEEELLLLLLLL')
   return (
     <Container>
-      <Header title="Lista de compras" />
+      <Header title="Lista de compras" showLogoutButton />
       <FormBox />
       <ShoppingList />
     </Container>
